@@ -4,94 +4,168 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>International Student Assistant</title>
-  <link rel="stylesheet" href="styles.css?v=10" />
+  <link rel="stylesheet" href="styles.css?v=20" />
 </head>
 
 <body>
+  <div class="emergency-strip">
+    <strong>Emergency?</strong>
+    AUC Security: +20.2.2615.4444 · AUC Hotline: 19282 · Ambulance: 123 · Police: 122
+  </div>
+
   <main class="app-shell">
-    <aside class="info-panel">
-      <div class="brand-mark">AUC</div>
-
-      <p class="eyebrow">International Student Support</p>
-      <h1>International Student Assistant</h1>
-
-      <p class="intro">
-        A free FAQ assistant for international students with guidance on arrival,
-        visas, housing, registration, insurance, campus access, emergencies, and IPSO contacts.
-      </p>
-
-      <div class="info-card warning-card">
-        <strong>Privacy reminder</strong>
-        <span>
-          Do not type passport numbers, visa scans, medical records, bank details,
-          or private documents here.
-        </span>
-      </div>
-
-      <div class="side-actions">
-        <button id="browseTopicsBtn" type="button" class="side-button">
-          Browse all topics
-        </button>
-
-        <button id="clearChatBtn" type="button" class="side-button muted">
-          Clear chat
-        </button>
-
-        <a
-          class="side-button email-button"
-          href="mailto:ipso@aucegypt.edu?subject=International%20student%20support%20request&body=Hello%20IPSO%2C%0A%0AMy%20name%20is%3A%0AMy%20AUC%20ID%2C%20if%20available%3A%0AMy%20program%3A%0AMy%20question%3A%0A%0AThank%20you."
-        >
-          Email IPSO
-        </a>
-      </div>
-
-      <p class="side-footer">
-        General guidance only. For personal, urgent, legal, medical, or document-specific
-        cases, contact the relevant AUC office directly.
-      </p>
-    </aside>
-
-    <section class="chat-panel">
-      <header class="chat-header">
+    <header class="top-header">
+      <div class="brand-area">
+        <div class="brand-mark" aria-hidden="true">AUC</div>
         <div>
-          <p class="chat-kicker">Ask in your own words</p>
-          <h2>How can I help?</h2>
-          <p>
-            Try: “When should I arrive?”, “How do I renew my visa?”,
-            “How do I apply for housing?”, or “Who do I contact in an emergency?”
-          </p>
+          <p class="eyebrow">International Student Support</p>
+          <h1>International Student Assistant</h1>
         </div>
-      </header>
+      </div>
 
-      <section id="chatbox" class="chatbox" aria-live="polite"></section>
+      <div class="top-actions">
+        <button id="newStudentFlowBtn" type="button" class="top-button">New student</button>
+        <button id="alreadyInCairoFlowBtn" type="button" class="top-button">Already in Cairo</button>
+        <button id="problemFlowBtn" type="button" class="top-button">I have a problem</button>
+        <button id="contactFlowBtn" type="button" class="top-button">Contact someone</button>
+      </div>
+    </header>
 
-      <section class="quick-buttons" aria-label="Quick topics">
-        <button type="button" data-topic="arrival">Arrival</button>
-        <button type="button" data-topic="airport-pickup">Airport Pickup</button>
-        <button type="button" data-topic="visa-residency">Visa / Residency</button>
-        <button type="button" data-topic="housing">Housing</button>
-        <button type="button" data-topic="course-registration">Registration</button>
-        <button type="button" data-topic="health-insurance">Insurance</button>
-        <button type="button" data-topic="student-id">Student ID</button>
-        <button type="button" data-topic="email-access">Email Access</button>
-        <button type="button" data-topic="emergency">Emergency</button>
-        <button type="button" data-topic="contact-ipso">Contact IPSO</button>
+    <section class="support-layout">
+      <aside class="side-panel">
+        <section class="side-card intro-card">
+          <p class="side-title">Ask in your own words</p>
+          <p>
+            Try: “When should I arrive?”, “I need help with my visa,”
+            “Where do I live?”, or “Who do I contact in an emergency?”
+          </p>
+        </section>
+
+        <section class="timeline-card">
+          <p class="side-title">Student journey</p>
+          <div class="timeline">
+            <button type="button" data-flow="new-student">Accepted</button>
+            <button type="button" data-topic="arrival">Before arrival</button>
+            <button type="button" data-topic="airport-pickup">Arrival day</button>
+            <button type="button" data-topic="course-registration">First week</button>
+            <button type="button" data-topic="contact-ipso">Need help</button>
+          </div>
+        </section>
+
+        <section class="contact-card">
+          <p class="side-title">Key contacts</p>
+          <div class="mini-contact-list">
+            <button type="button" data-contact-copy="IPSO: ipso@aucegypt.edu · +20.2.2615.3612">IPSO</button>
+            <button type="button" data-contact-copy="Visa and residency: students.residency@aucegypt.edu">Visa</button>
+            <button type="button" data-contact-copy="Airport pickup: carpool@aucegypt.edu">Airport</button>
+            <button type="button" data-contact-copy="Housing move-in: reslife@aucegypt.edu">Housing</button>
+            <button type="button" data-contact-copy="AUC Security: +20.2.2615.4444 · Hotline: 19282">Emergency</button>
+          </div>
+        </section>
+
+        <section class="side-card warning-card">
+          <p class="side-title">Privacy reminder</p>
+          <p>
+            Do not type passport numbers, visa scans, medical records, bank details,
+            IDs, or private documents here.
+          </p>
+        </section>
+
+        <section class="settings-card">
+          <p class="side-title">Display</p>
+
+          <label class="toggle-row">
+            <input id="compactModeToggle" type="checkbox" />
+            <span>Compact mode</span>
+          </label>
+
+          <label class="toggle-row">
+            <input id="darkModeToggle" type="checkbox" />
+            <span>Dark mode</span>
+          </label>
+
+          <label class="toggle-row">
+            <input id="contrastModeToggle" type="checkbox" />
+            <span>High contrast</span>
+          </label>
+
+          <label class="toggle-row">
+            <input id="staffModeToggle" type="checkbox" />
+            <span>Staff mode</span>
+          </label>
+        </section>
+
+        <section class="side-actions">
+          <button id="browseTopicsBtn" type="button" class="primary-side-button">Browse topics</button>
+          <button id="urgentHelpBtn" type="button" class="danger-side-button">Urgent help</button>
+          <button id="clearChatBtn" type="button" class="secondary-side-button">Clear chat</button>
+        </section>
+      </aside>
+
+      <section class="chat-panel">
+        <section class="empty-state" id="emptyState">
+          <div class="empty-card" data-topic="arrival">
+            <span>✈️</span>
+            <strong>Before arrival</strong>
+            <small>Orientation, timing, airport, first steps</small>
+          </div>
+
+          <div class="empty-card" data-topic="visa-residency">
+            <span>🛂</span>
+            <strong>Visa and residency</strong>
+            <small>Entry visa, residency, fees, BSO</small>
+          </div>
+
+          <div class="empty-card" data-topic="housing">
+            <span>🏠</span>
+            <strong>Housing</strong>
+            <small>StarRez, move-in, residence life</small>
+          </div>
+
+          <div class="empty-card" data-topic="course-registration">
+            <span>📚</span>
+            <strong>Registration</strong>
+            <small>PCP form, credits, course changes</small>
+          </div>
+        </section>
+
+        <section id="chatbox" class="chatbox" aria-live="polite"></section>
+
+        <section id="typingIndicator" class="typing-indicator" aria-hidden="true">
+          <span></span><span></span><span></span>
+          Assistant is checking the best answer...
+        </section>
+
+        <section id="suggestionBar" class="suggestion-bar" aria-label="Suggested questions"></section>
+
+        <section class="quick-buttons" aria-label="Quick topics">
+          <button type="button" data-topic="arrival">✈️ Arrival</button>
+          <button type="button" data-topic="airport-pickup">🚗 Airport Pickup</button>
+          <button type="button" data-topic="visa-residency">🛂 Visa / Residency</button>
+          <button type="button" data-topic="housing">🏠 Housing</button>
+          <button type="button" data-topic="course-registration">📚 Registration</button>
+          <button type="button" data-topic="health-insurance">🏥 Insurance</button>
+          <button type="button" data-topic="student-id">🪪 Student ID</button>
+          <button type="button" data-topic="email-access">📧 Email</button>
+          <button type="button" data-topic="emergency">🚨 Emergency</button>
+          <button type="button" data-topic="contact-ipso">☎️ Contact</button>
+        </section>
+
+        <form id="chatForm" class="input-area">
+          <input
+            id="userInput"
+            type="text"
+            placeholder="Type your question here..."
+            autocomplete="off"
+            maxlength="350"
+          />
+          <button id="sendBtn" type="submit">Send</button>
+        </form>
       </section>
-
-      <form id="chatForm" class="input-area">
-        <input
-          id="userInput"
-          type="text"
-          placeholder="Type your question here..."
-          autocomplete="off"
-          maxlength="350"
-        />
-        <button id="sendBtn" type="submit">Send</button>
-      </form>
     </section>
   </main>
 
-  <script src="content.js?v=10"></script>
-  <script src="script.js?v=10"></script>
+  <script src="content.js?v=20"></script>
+  <script src="script.js?v=20"></script>
 </body>
 </html>
