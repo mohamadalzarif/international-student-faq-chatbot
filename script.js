@@ -6,7 +6,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const browseTopicsBtn = document.getElementById("browseTopicsBtn");
   const quickButtons = document.querySelectorAll("[data-topic]");
 
-  const STORAGE_KEY = "aucInternationalStudentAssistantChat";
+  const STORAGE_KEY = "aucInternationalStudentAssistantChatV10";
+  const FAQ_ITEMS = Array.isArray(window.FAQ_DATA) ? window.FAQ_DATA : [];
 
   const STOP_WORDS = new Set([
     "a", "an", "the", "is", "are", "am", "i", "me", "my", "we", "our", "you",
@@ -139,8 +140,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function fuzzyMatch(token, candidate) {
     if (token.length < 5 || candidate.length < 5) return false;
-    const distance = levenshtein(token, candidate);
-    return distance <= 2;
+    return levenshtein(token, candidate) <= 2;
   }
 
   function escapeHtml(text) {
@@ -160,7 +160,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function getFaqById(id) {
-    return window.FAQ_DATA.find(item => item.id === id);
+    return FAQ_ITEMS.find(item => item.id === id);
   }
 
   function getSearchableText(faq) {
@@ -229,7 +229,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function rankFaqs(message) {
-    return window.FAQ_DATA
+    return FAQ_ITEMS
       .map(faq => ({
         faq,
         score: scoreFaq(message, faq)
@@ -268,6 +268,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  function appendSection(parent, title, text) {
+    if (!text) return;
+
+    const sectionTitle = document.createElement("span");
+    sectionTitle.className = "answer-section-title";
+    sectionTitle.textContent = title;
+    parent.appendChild(sectionTitle);
+
+    const paragraph = document.createElement("p");
+    paragraph.textContent = text;
+    parent.appendChild(paragraph);
+  }
+
   function createAnswerMessage(faq, prefix = "", save = true) {
     const row = document.createElement("div");
     row.className = "message-row bot";
@@ -302,11 +315,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const list = document.createElement("ol");
       list.className = "answer-list";
+
       faq.steps.forEach(step => {
         const li = document.createElement("li");
         li.textContent = step;
         list.appendChild(li);
       });
+
       bubble.appendChild(list);
     }
 
@@ -387,19 +402,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  function appendSection(parent, title, text) {
-    if (!text) return;
-
-    const sectionTitle = document.createElement("span");
-    sectionTitle.className = "answer-section-title";
-    sectionTitle.textContent = title;
-    parent.appendChild(sectionTitle);
-
-    const paragraph = document.createElement("p");
-    paragraph.textContent = text;
-    parent.appendChild(paragraph);
-  }
-
   function createSuggestionMessage(ranked, save = true) {
     const suggestions = ranked
       .filter(item => item.score > 0)
@@ -458,7 +460,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function createTopicBrowser(save = true) {
     const categories = {};
 
-    window.FAQ_DATA.forEach(faq => {
+    FAQ_ITEMS.forEach(faq => {
       if (!categories[faq.category]) categories[faq.category] = [];
       categories[faq.category].push(faq);
     });
@@ -517,6 +519,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function getBestReply(message) {
+    if (!FAQ_ITEMS.length) {
+      return { type: "error" };
+    }
+
     if (isEmergencyMessage(message)) {
       return {
         type: "answer",
@@ -559,6 +565,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     setTimeout(() => {
       const reply = getBestReply(cleanMessage);
+
+      if (reply.type === "error") {
+        createTextMessage(
+          "bot",
+          "The FAQ content could not be loaded. Please make sure content.js starts with window.FAQ_DATA = [ ... ]; and that content.js loads before script.js."
+        );
+        return;
+      }
 
       if (reply.type === "answer" && reply.faq) {
         createAnswerMessage(reply.faq, reply.prefix);
@@ -665,6 +679,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (clearChatBtn) {
     clearChatBtn.addEventListener("click", clearChat);
+  }
+
+  if (!chatbox || !userInput || !chatForm) {
+    console.error("Missing required chatbot HTML elements.");
+    return;
   }
 
   if (!loadChatHistory()) {
