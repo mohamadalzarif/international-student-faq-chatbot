@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>International Student Assistant</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>International Student Assistant</h1>
+  <p>Welcome! I can help answer questions related to arrival, visa/residency, housing, registration, insurance, student ID, email access, emergency help, contacting IPSO, and more. Select a topic or ask a question.</p>
+  <div id="chatbox" class="chatbox"></div>
+  <div id="quick-buttons" class="quick-buttons">
+    <button data-topic="arrival">Arrival</button>
+    <button data-topic="visa">Visa / Residency</button>
+    <button data-topic="housing">Housing</button>
+    <button data-topic="registration">Registration</button>
+    <button data-topic="insurance">Insurance</button>
+    <button data-topic="student-id">Student ID</button>
+    <button data-topic="email">Email Access</button>
+    <button data-topic="emergency">Emergency</button>
+    <button data-topic="contact">Contact IPSO</button>
+  </div>
+  <div class="input-area">
+    <input id="userInput" type="text" placeholder="Type your question here..." />
+    <button id="sendBtn">Send</button>
+  </div>
+  <!-- Load the FAQ content first so it is available for the chatbot script -->
+  <script src="content.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
