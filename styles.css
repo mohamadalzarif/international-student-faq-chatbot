@@ -1,71 +1,140 @@
-/* Basic styling for the FAQ chatbot. Adjust colours and spacing as needed. */
+/*
+ * Modern styling for the International Student Assistant chatbot.
+ *
+ * This stylesheet defines a clean, responsive card layout with chat bubbles
+ * and simple accent colours. It uses CSS custom properties to allow easy
+ * theming and aims to improve readability and accessibility.
+ */
+
+:root {
+  --primary-color: #004080;
+  --secondary-color: #f5faff;
+  --bot-background: #eaf2fb;
+  --user-background: #d1e7dd;
+  --bot-text: #084298;
+  --user-text: #0f5132;
+}
+
 body {
-  font-family: Arial, sans-serif;
-  margin: 20px auto;
-  max-width: 700px;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  background-color: #f7f9fc;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 30px;
+  color: #333333;
+}
+
+/* Container for the entire chat interface */
+.chat-container {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 100%;
+  max-width: 540px;
+}
+
+.chat-container h1 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: var(--primary-color);
+  font-size: 1.8em;
+}
+
+.chat-container p {
+  margin-top: 0;
+  margin-bottom: 20px;
   line-height: 1.5;
 }
 
-h1 {
-  font-size: 1.8em;
-  margin-bottom: 0.2em;
-}
-
-p {
-  margin-top: 0;
-  margin-bottom: 1em;
-}
-
+/* Chat messages container */
 .chatbox {
-  border: 1px solid #ccc;
+  border: 1px solid #e0e0e0;
   border-radius: 8px;
+  background-color: var(--secondary-color);
   padding: 15px;
-  height: 400px;
+  height: 360px;
   overflow-y: auto;
-  background-color: #f8f8f8;
+  display: flex;
+  flex-direction: column;
 }
 
+/* Message bubbles */
+.user-message,
+.bot-message {
+  max-width: 80%;
+  padding: 10px 14px;
+  border-radius: 16px;
+  margin: 6px 0;
+  word-wrap: break-word;
+}
+
+.user-message {
+  align-self: flex-end;
+  background-color: var(--user-background);
+  color: var(--user-text);
+  text-align: right;
+}
+
+.bot-message {
+  align-self: flex-start;
+  background-color: var(--bot-background);
+  color: var(--bot-text);
+  text-align: left;
+}
+
+/* Quick action buttons below the chat */
+.quick-buttons {
+  margin: 10px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.quick-buttons button {
+  background-color: #f0f4ff;
+  border: 1px solid #d0dffa;
+  border-radius: 8px;
+  padding: 8px 12px;
+  color: var(--primary-color);
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.quick-buttons button:hover {
+  background-color: #e2eaff;
+}
+
+/* Input area with text box and send button */
 .input-area {
+  display: flex;
   margin-top: 10px;
 }
 
 .input-area input {
-  width: 75%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid #cccccc;
+  border-radius: 8px;
+  font-size: 14px;
 }
 
 .input-area button {
-  padding: 8px 12px;
-  margin-left: 5px;
-}
-
-.user-message {
-  text-align: right;
-  margin: 6px 0;
-  color: #333;
-}
-
-.bot-message {
-  text-align: left;
-  margin: 6px 0;
-  color: #006699;
-}
-
-.quick-buttons {
-  margin: 10px 0;
-}
-
-.quick-buttons button {
-  margin: 4px;
-  padding: 6px 10px;
-  border-radius: 4px;
-  border: 1px solid #ddd;
-  background-color: #f2f2f2;
+  margin-left: 8px;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--primary-color);
+  color: #ffffff;
+  font-size: 14px;
   cursor: pointer;
+  transition: background-color 0.2s;
 }
 
-.quick-buttons button:hover {
-  background-color: #e6e6e6;
+.input-area button:hover {
+  background-color: #003366;
 }
