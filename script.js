@@ -45,8 +45,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Fallback response if nothing matched
     return (
       "I'm sorry, I do not have an answer for that question. " +
-      'Please contact the International Program Support Office (IPSO) or try asking about ' +
-      'arrival, visa/residency, housing, registration, insurance, student ID, email access, emergency help, or contact information.'
+      "Please contact the International Programs and Services Office (IPSO) for personalised assistance, " +
+      "or try asking about arrival, visa/residency, housing, registration, insurance, student ID, email access, emergencies or IPSO contact details."
     );
   }
 
