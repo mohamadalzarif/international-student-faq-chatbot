@@ -10,35 +10,47 @@
 <body>
   <main class="page">
     <section class="assistant-card">
-      <header class="header">
-        <p class="tagline">AUC International Student Support</p>
-        <h1>International Student Assistant</h1>
-        <p class="intro">
-          Ask about arrival in Cairo, visas and residency, airport pickup, housing,
-          course registration, health insurance, your AUC ID, email access,
-          emergencies, or contacting IPSO.
-        </p>
+      <header class="hero">
+        <div>
+          <p class="eyebrow">AUC International Student Support</p>
+          <h1>International Student Assistant</h1>
+          <p class="intro">
+            Ask about arrival in Cairo, visas and residency, airport pickup,
+            housing, course registration, health insurance, AUC email, student ID,
+            emergencies, or contacting IPSO.
+          </p>
+        </div>
+
+        <div class="header-actions">
+          <button id="browseTopicsBtn" type="button" class="secondary-button">
+            Browse topics
+          </button>
+          <button id="clearChatBtn" type="button" class="secondary-button quiet">
+            Clear chat
+          </button>
+        </div>
       </header>
 
-      <div class="notice">
+      <section class="privacy-note">
+        <strong>Privacy note:</strong>
         Please do not type passport numbers, visa scans, medical records, bank details,
         or other sensitive personal information here.
-      </div>
+      </section>
 
-      <div id="chatbox" class="chatbox" aria-live="polite"></div>
+      <section id="chatbox" class="chatbox" aria-live="polite"></section>
 
-      <div id="quick-buttons" class="quick-buttons">
+      <section class="quick-buttons" aria-label="Quick topics">
         <button type="button" data-topic="arrival">Arrival</button>
-        <button type="button" data-topic="visa">Visa / Residency</button>
-        <button type="button" data-topic="airport">Airport Pickup</button>
+        <button type="button" data-topic="airport-pickup">Airport Pickup</button>
+        <button type="button" data-topic="visa-residency">Visa / Residency</button>
         <button type="button" data-topic="housing">Housing</button>
-        <button type="button" data-topic="registration">Registration</button>
-        <button type="button" data-topic="insurance">Insurance</button>
+        <button type="button" data-topic="course-registration">Registration</button>
+        <button type="button" data-topic="health-insurance">Insurance</button>
         <button type="button" data-topic="student-id">Student ID</button>
-        <button type="button" data-topic="email">Email Access</button>
+        <button type="button" data-topic="email-access">Email Access</button>
         <button type="button" data-topic="emergency">Emergency</button>
-        <button type="button" data-topic="contact">Contact IPSO</button>
-      </div>
+        <button type="button" data-topic="contact-ipso">Contact IPSO</button>
+      </section>
 
       <form id="chatForm" class="input-area">
         <input
@@ -46,15 +58,16 @@
           type="text"
           placeholder="Type your question here..."
           autocomplete="off"
-          maxlength="300"
+          maxlength="350"
         />
         <button id="sendBtn" type="submit">Send</button>
       </form>
 
-      <p class="footer-note">
-        This chatbot gives general guidance only. For personal, urgent, medical,
-        legal, or document-specific cases, contact the relevant AUC office directly.
-      </p>
+      <footer class="footer-note">
+        This chatbot gives general guidance based on AUC information. For personal,
+        urgent, legal, medical, or document-specific cases, contact the relevant AUC
+        office directly.
+      </footer>
     </section>
   </main>
 
