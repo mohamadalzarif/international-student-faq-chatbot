@@ -1,77 +1,122 @@
-/**
- * Comprehensive FAQ content for the international student chatbot.
- *
- * This module stores answers to common questions asked by visiting or
- * international students at AUC. Each key corresponds to a topic and the
- * value contains a plain‑text answer summarising up‑to‑date guidance from
- * official AUC sources (citations are embedded as comments to preserve
- * traceability).  Do not include confidential or personal data in these
- * answers; the file is loaded directly into the user’s browser.
- */
-const faqData = {
-  /**
-   * Arrival guidance: summarises official AUC instructions for study‑abroad
-   * students travelling to Egypt. Advising and course registration are handled
-   * by IPSO before you arrive. Keep your passport and admission letter with
-   * you, and do not send personal documents via this chatbot.
-   */
-  "arrival":
-    "AUC’s International Programs and Services Office (IPSO) registers visiting students before they arrive in Cairo – there is no online self‑registration for study‑abroad students【130122837438368†L141-L149】. Make sure your passport is valid for at least six months beyond your arrival and carry your admission letter. Many nationalities (e.g. U.S., Canada, Australia and most EU) can purchase a one‑month tourist visa on arrival; others such as Polish, Portuguese and Finnish citizens must apply for an entry visa in advance【745837844494780†L136-L171】. Once in Egypt, take the free AUC airport shuttle by emailing carpool@aucegypt.edu; show your acceptance letter and passport to board【130122837438368†L162-L170】. International Student Orientation is held the week before classes; you will obtain your AUC ID card and student visa, take placement tests, complete late registration and learn about campus services. Orientation includes campus tours and guidance from International Peer Leaders, and an optional 20‑hour survival Arabic course for about USD $280【130122837438368†L173-L189】. Keep emergency contacts handy but do not send personal documents through this chatbot.",
-
-  /**
-   * Visa and residency information: explains pre‑departure visas, on‑arrival
-   * requirements, fees and the role of the Business Support Office. Always
-   * confirm the latest requirements with students.residency@aucegypt.edu.
-   */
-  "visa":
-    "Before departure, apply for a 90‑day entry visa at an Egyptian consulate and state that your purpose is study; some nationals can instead buy a one‑month tourist visa on arrival for about $25【745837844494780†L136-L171】. Passports must be valid at least six months beyond arrival. After you arrive, some nationalities must register their passports within seven days and pay a small fee; all students must complete the Business Support Form and follow the Business Support Office’s (BSO) instructions【745837844494780†L274-L289】. Government fees are roughly EGP 7 100 for tourist‑visa renewal, EGP 850 for a re‑entry visa and EGP 7 100 for a residency visa, with a late fine of EGP 1 685【745837844494780†L291-L301】. Residency approvals are valid for up to four years and residency cards must be renewed annually【745837844494780†L304-L337】. Always contact students.residency@aucegypt.edu for up‑to‑date guidance; do not share passport scans via this bot.",
-
-  /**
-   * Housing: describes the on‑campus housing process and off‑campus advice.
-   */
-  "housing":
-    "First‑year students are required to live on campus through the First‑Year Residential Experience (FYRE) program【689151318865543†L142-L148】. To apply for AUC housing, wait for an email from the Office of Residential Life announcing application dates. After securing admission, create and activate your AUC email account, then log into the StarRez portal with your AUC username to select a room and sign a housing contract【689151318865543†L166-L174】. Continuing, graduate and exchange students follow the same portal procedure and will receive move‑in instructions and final housing requirements by email before the semester begins【689151318865543†L186-L199】. On move‑in day, pick up your ID card, obtain your room key and learn about spare‑key policies; always follow housing guidelines【656789696840349†L155-L161】. For off‑campus options, IPSO can suggest trusted resources, but you remain responsible for lease agreements.",
-
-  /**
-   * Registration: outlines how visiting students register, credit loads and
-   * course eligibility. IPSO handles the registration after you submit a
-   * Preliminary Course Planning form.
-   */
-  "registration":
-    "IPSO registers visiting international students; you must submit a Preliminary Course Planning (PCP) form during the advising period listing your preferred courses【316441976852860†L143-L177】. IPSO obtains departmental approval and enrols you – there is no self‑registration for study‑abroad students. Undergraduate visitors generally register during the early‑registration period and have a drop/add period; graduate students register during on‑site orientation【316441976852860†L178-L205】. A full‑time load is 12–15 credits for undergraduates and 9 credits for graduate students. Overloads require approval and are limited to 18 credits for undergraduates and 12 credits for graduate students【316441976852860†L167-L177】. Undergraduates may take 1000–4000‑level courses and some 5100‑level courses; graduate visitors must take 5000‑ or 6000‑level courses but may include one 3‑credit Arabic language course if they complete the ALNG background form【316441976852860†L249-L259】【316441976852860†L256-L297】. PCP deadlines are usually 1 June for fall and 1 December for spring. Check the dynamic schedule and course catalogue and email ipso@aucegypt.edu with questions.",
-
-  /**
-   * Insurance: details the mandatory health‑insurance plan, coverage, fees and
-   * contact information for GlobeMed Egypt.
-   */
-  "insurance":
-    "All international students at AUC are automatically enrolled in the university’s comprehensive health insurance plan administered by Libano‑Suisse Takaful; there are no waivers and coverage is valid only within Egypt【120792988157332†L134-L145】. The plan covers emergency medical and non‑medical evacuation, repatriation of remains, hospital treatment, ambulance transport, doctor visits and prescribed medications【120792988157332†L147-L159】. Fees for the 2025–2026 academic year are approximately $172 for fall, $29 for winter, $172 for spring and $29 for summer sessions【120792988157332†L166-L190】. You can access your digital insurance card through the GlobeMed Fit app and must show it when seeking care. For prior approvals email approvals@globemedegypt.com; for chronic medications email chronic@globemedegypt.com; for reimbursements email reimbursement@globemedegypt.com; and for complaints email complaints@globemedegypt.com【120792988157332†L193-L257】. The GlobeMed hotline is 16784 and WhatsApp support is +2 010 6666 9888. In medical emergencies, contact campus medical services or call the public emergency numbers listed in the ‘Emergency’ section.",
-
-  /**
-   * Student ID: explains when and how students receive their AUC ID and its
-   * importance for accessing campus facilities.
-   */
-  "student-id":
-    "Your AUC student ID card is issued during orientation once IPSO confirms your course registration. The ID card grants access to campus buildings, housing, library and other services, so carry it at all times. If you live on campus, you must activate your ID to open residence halls and you may request a spare key card for a refundable deposit【656789696840349†L155-L161】. If your card is lost or damaged, contact the Student ID office for a replacement (a fee applies). Never share your ID card with others and do not send photos of it via this chatbot.",
-
-  /**
-   * Email: describes how to activate your AUC email and why it is important.
-   */
-  "email":
-    "After securing admission, you will receive instructions to create and activate your official AUC email account (username@aucegypt.edu). This account is required to access the StarRez housing portal and to receive official communications. Check your AUC email regularly for announcements about course registration, orientation, visa procedures, housing and university events. Do not share your email password via this bot; contact the IT Help Desk at +20 2 2615 1200 if you have trouble accessing your account.",
-
-  /**
-   * Emergency: lists campus and public emergency numbers and emphasises that
-   * serious issues must be directed to security or medical services.
-   */
-  "emergency":
-    "For urgent assistance on campus, call AUC Security at +20 2 2615 4444; the medical clinic in New Cairo at +20 2 2615 4000; or the medical clinic at Tahrir Square at +20 2 2797 5000【589841503635804†L169-L189】. The university doctor can be reached at 0128 000 1039 and the Facilities & Operations service center at +20 2 2615 2222. For environmental health and safety issues call +20 2 2615 4170/4180, and for IT emergencies call the Help Desk at +20 2 2615 1200【589841503635804†L169-L189】. The campus emergency hotline is 19282 (19AUC). Public emergency numbers in Egypt include ambulance (123), civil defense (125), police (122), road emergencies (012 2111 0000) and tourism police (126)【589841503635804†L169-L189】. If you ever feel unsafe, contact these numbers immediately and follow instructions from campus security. This chatbot cannot handle emergencies.",
-
-  /**
-   * Contact: provides IPSO location, office hours and contact details as well
-   * as other useful email addresses. Always refer to official offices for
-   * personalised advice.
-   */
-  "contact":
-    "The International Programs and Services Office (IPSO) is located in Room P126 of the Prince Alwaleed Bin Talal Bin Abdulaziz Alsaud building on the AUC campus. Office hours are 9:00 AM to 3:00 PM【845159595531818†L206-L219】. You can email ipso@aucegypt.edu or call +20 2 2615 3612 for assistance with arrival, visa/residency, housing, registration and other concerns【845159595531818†L206-L219】. For visa questions contact the Business Support Office at students.residency@aucegypt.edu. For airport transportation queries email carpool@aucegypt.edu【130122837438368†L162-L170】. Remember that this chatbot provides general guidance only; always contact IPSO or the relevant AUC office for official assistance."
-};
+const FAQ_DATA = [
+  {
+    id: "arrival",
+    title: "Arrival in Cairo and orientation",
+    keywords: [
+      "arrival", "arrive", "arriving", "when arrive", "when am i arriving",
+      "come to cairo", "coming to cairo", "land", "landing", "cairo airport",
+      "airport", "orientation", "before arrival", "pre arrival", "survival arabic",
+      "welcome pack", "international peer leaders", "ipl", "new student"
+    ],
+    answer:
+      "Before arriving in Cairo, visiting international students should know that advising and course registration are handled before arrival by the Office of International Programs and Services, known as IPSO. There is no online web registration for study-abroad students, so students should work closely with their home university advisor to make sure their selected AUC courses can transfer back.\n\nTo enter Egypt, students generally need a 30-day tourist visa. Some nationalities can purchase a tourist visa upon arrival, while others must apply before traveling. Once students arrive on campus for orientation, they receive instructions on how to purchase or process the student visa through the Business Support Office.\n\nInternational Student Orientation is normally scheduled the week before classes begin. It includes sessions about AUC and life in Cairo, student ID and student visa steps, placement tests, late registration, campus tours, a welcome pack, and guidance from International Peer Leaders. AUC also offers an optional 20-hour survival Arabic course in Egyptian Colloquial Arabic during orientation for students with no Arabic background. The listed cost is $280 and can be paid upon arrival in USD or Egyptian pounds."
+  },
+  {
+    id: "airport",
+    title: "Airport pickup and transportation",
+    keywords: [
+      "airport pickup", "pickup", "airport", "cairo airport", "transportation",
+      "driver", "carpool", "car pool", "shuttle", "bus", "auc bus", "bus pass",
+      "how do i get to campus", "from airport", "airport to campus", "airport to residence"
+    ],
+    answer:
+      "Before arriving, students can arrange airport transportation with AUC by contacting carpool@aucegypt.edu. A driver can pick students up at Cairo airport and take them to their residence.\n\nIf students arrive in Cairo and need to get to the New Cairo campus, the AUC shuttle bus is usually the best option. Students normally need an AUC student ID to board the shuttle, but upon initial arrival they may show the bus driver their acceptance letter and passport. AUC states that the shuttle network covers most Cairo neighborhoods and runs throughout the day. During orientation, students do not need a bus pass."
+  },
+  {
+    id: "visa",
+    title: "Visa and residency",
+    keywords: [
+      "visa", "student visa", "tourist visa", "residency", "residence", "residence permit",
+      "renew visa", "visa renewal", "extend visa", "extension", "re entry", "re-entry",
+      "passport", "passport registration", "business support", "bso", "immigration",
+      "overstay", "fine", "entry visa", "90 day visa", "thirty day visa"
+    ],
+    answer:
+      "Before departure, students should apply for the appropriate entry visa at the nearest Egyptian consulate and state that the purpose of stay is studying. AUC advises students to obtain a 90-day visa application from the Egyptian consulate in their home country and apply well in advance.\n\nNorth American, Canadian, Australian, and EU citizens may obtain a visa upon arrival for $25, valid for one month. Citizens of Poland, Portugal, and Finland must apply for a 90-day visa before arrival through the Egyptian embassy. Students should make sure their passport is valid for at least six months beyond their arrival date and check with the Egyptian consulate or embassy for updates.\n\nAfter arrival in Egypt, students from some countries must register their passports within seven days at the Business Support Office and pay a registration fee of EGP 110. Some nationalities may not be permitted to extend tourist visas. If security approval is delayed, the Business Support Office may provide a letter confirming enrollment at AUC and that the visa is under processing.\n\nAll international students must complete the Business Support Form and consult the Business Support Office for detailed guidance. The Business Support Office emails students the exact appointment details and required procedures for the Immigration Office. AUC notes that students must either remain in Egypt or travel with a guarantee to obtain an entry visa from the nearest Egyptian consulate, to avoid re-entry problems and missed classes.\n\nGovernment residency visa fees listed by AUC include EGP 7,100 for tourist visa renewal or residency extension, EGP 850 for a re-entry visa, EGP 7,100 for a residency visa, and EGP 1,685 for a late residency visa application fine. New international students should use the online payment link after arriving in Egypt and notify students.residency@aucegypt.edu after payment. Continuing students should contact the Business Support Office at Room G022 in the Administration Building to confirm the nearest available Immigration Office date and should bring their original passport and residency card for review.\n\nGovernment approvals are valid for four years, while residency cards are renewed annually. For visa or residency questions, students should contact students.residency@aucegypt.edu."
+  },
+  {
+    id: "housing",
+    title: "Housing and student residences",
+    keywords: [
+      "housing", "residence", "residences", "dorm", "dorms", "where do i live",
+      "where will i live", "accommodation", "room", "roommate", "starrez",
+      "housing portal", "move in", "move-in", "reslife", "residential life",
+      "on campus housing", "off campus housing"
+    ],
+    answer:
+      "AUC University Residences provide housing options for freshmen, graduate students, transfer students, and exchange students. First-time freshmen live in on-campus residence and participate in the First-Year Residential Experience program, which supports students as they transition to university life.\n\nFor first-semester students, new graduate students, exchange students, and transfer students, the housing application steps are: secure final admission to AUC, create and activate the AUC email account, log in to the StarRez Portal using the AUC username and password, then complete the application, room selection, and contract signature. Current AUC students and returning residents also use the StarRez Portal.\n\nAUC says students should watch for an email announcing housing application launch dates. Closer to the start of the semester, all booked residents receive an email from the Office of Residential Life with move-in procedures, final housing requirements, and additional preparation details.\n\nFor students arriving on international flights outside official move-in dates or times, AUC’s move-in guidelines say they should arrange after-hours move-in by emailing their estimated time of arrival to reslife@aucegypt.edu at least 48 hours before arrival. Arrivals outside the listed dates and times may be charged a move-in service fee."
+  },
+  {
+    id: "registration",
+    title: "Course registration and course planning",
+    keywords: [
+      "registration", "register", "course registration", "classes", "courses",
+      "course", "pcp", "preliminary course planning", "schedule", "drop add",
+      "add drop", "academic advisor", "advisor", "course load", "credits",
+      "credit hours", "overload", "transfer credit", "dynamic schedule",
+      "class schedule", "arabic course", "alng", "placement exam"
+    ],
+    answer:
+      "For visiting international students enrolled in regular English-taught AUC courses, IPSO is responsible for course registration. After acceptance and during the advising period, students submit the Preliminary Course Planning form, known as the PCP form, with course preferences. IPSO then obtains departmental approval and registers students during the registration period.\n\nStudents’ home universities are responsible for deciding whether AUC courses transfer back to their degrees. At the end of the AUC term, students can obtain an official AUC transcript showing course names and letter grades.\n\nUndergraduate visiting students are registered during the early registration period, pending approvals from AUC academic departments. They have one more chance to change their schedule during the late registration or drop/add period during the first week of classes. Graduate students are registered during onsite international student orientation.\n\nFor fall and spring semesters, undergraduate students must enroll in 12 to 15 credit hours, while graduate students must enroll in 9 credits to be full-time and eligible for Egyptian residency. The maximum load in summer is 6 credit hours, or two courses. The maximum load in winter is 3 credit hours, or one course.\n\nFor overloads, undergraduates may take up to 18 credits and graduate students up to 12 credits with approval from the Office of the University Registrar. If students are studying abroad through tuition exchange, both AUC and the home university must approve the overload, and students may be responsible for extra credits.\n\nUndergraduates may generally take 1000, 2000, 3000, and 4000-level courses, pending prerequisites. Upper-level undergraduates may be eligible for some 5100-level courses and one 5200-level course, excluding business, pending departmental approval. Graduate students must take only 5000 or 6000-level graduate courses, except that they may include one three-credit Arabic language class.\n\nStudents who want Arabic language courses for credit should complete the Arabic background form if they have prior Arabic knowledge, so the Arabic department can arrange an online placement exam. Visiting students should take only courses with the ALNG prefix, not ALIN or ALIS, because ALNG courses are designed to be taken alongside English-taught content courses.\n\nThe PCP form deadlines are June 1 for fall and December 1 for spring. For fall and spring, undergraduates must list five main courses and at least three alternates. Graduate students must list three main courses and at least two alternates. If an undergraduate student wants to take only four courses, they should email ipso@aucegypt.edu."
+  },
+  {
+    id: "insurance",
+    title: "Health care and insurance",
+    keywords: [
+      "insurance", "health insurance", "health care", "healthcare", "doctor",
+      "hospital", "clinic", "medical", "medicine", "prescription", "medication",
+      "globemed", "globemed fit", "libano", "suisse", "takaful", "reimbursement",
+      "approval", "chronic", "medical card", "digital card", "ambulance",
+      "evacuation", "health plan"
+    ],
+    answer:
+      "AUC requires all international students to enroll in AUC’s comprehensive health insurance policy. Participation is mandatory upon acceptance to AUC. Enrollment is automatic, and no exemptions are allowed, even if students already have comparable coverage through a personal plan or home university plan.\n\nThe international student health insurance service is managed by IPSO. AUC holds an insurance policy with Libano-Suisse Takaful Egypt, and the insurance is valid only within Egypt.\n\nThe plan covers emergency medical evacuation, non-medical emergency evacuation, repatriation of remains, full coverage for hospital treatment, full coverage for ambulance transportation, full coverage for doctor visits, and full coverage for prescribed medications.\n\nFees are charged automatically to student accounts each enrolled term. AUC’s listed fees are $172 for Fall 2025, $29 for Winter 2026, $172 for Spring 2026, and $29 for Summer 2026. Fees are subject to change each academic year.\n\nStudents receive digital insurance cards through the GlobeMed Fit mobile app. GlobeMed contact details include WhatsApp +2.010.6666.9888 for approval requests and inquiries, and hotline 16784 for inquiries or support. For approvals, students can email Approvals@globemedegypt.com. For chronic prescriptions, email Chronic@globemedegypt.com. For reimbursement inquiries and follow-up, email reimbursement@globemedegypt.com. For complaints, email Complaints@globemedegypt.com."
+  },
+  {
+    id: "student-id",
+    title: "AUC student ID",
+    keywords: [
+      "student id", "id", "id card", "card", "auc id", "university id",
+      "campus access", "bus access", "shuttle access", "id activation",
+      "id center", "lost id", "replace id", "key card"
+    ],
+    answer:
+      "Students may take care of obtaining their AUC student ID card during International Student Orientation. The ID card is important for accessing campus services and usually for boarding the AUC shuttle bus.\n\nIf a student has just arrived and does not yet have an AUC ID, AUC says they may show their acceptance letter and passport to the bus driver during their initial arrival and should be allowed to ride the shuttle.\n\nFor students living in AUC Student Residences, move-in procedures may include getting a spare key card at check-in, visiting the ID Center for ID issuance and activation, and returning the spare key card to the reception desk. Students should keep their ID with them and should not share or send pictures of it through this chatbot."
+  },
+  {
+    id: "email",
+    title: "AUC email and account access",
+    keywords: [
+      "email", "auc email", "activate email", "account", "username",
+      "password", "login", "webmail", "mail", "student account",
+      "starrez login", "portal", "banner", "canvas", "moodle", "it help",
+      "it help desk", "can't login", "cannot login", "access"
+    ],
+    answer:
+      "After final admission, students should create and activate their AUC email account. The email format is usually username@aucegypt.edu. This account is important because official communications about housing, orientation, registration, visa steps, and university services are sent to the AUC email.\n\nStudents also need their AUC credentials to access services such as the StarRez housing portal, webmail, Banner, Canvas, Moodle, and other university systems. AUC lists webmail as webmail.aucegypt.edu. If students have trouble with account access, they should contact the IT Help Desk at +20.2.2615.1200.\n\nStudents should never share their password through this chatbot or with anyone else."
+  },
+  {
+    id: "emergency",
+    title: "Emergency contacts",
+    keywords: [
+      "emergency", "urgent", "unsafe", "danger", "security", "police",
+      "ambulance", "hospital", "medical emergency", "doctor", "fire",
+      "civil defense", "road emergency", "tourism police", "help now",
+      "i feel unsafe", "attack", "harassment", "lost passport urgent"
+    ],
+    answer:
+      "If this is an emergency, do not rely on this chatbot. Contact campus security or local emergency services immediately.\n\nAUC emergency and support numbers include: AUC Security Office +20.2.2615.4444, Medical Services New Cairo +20.2.2615.4000, Medical Services Tahrir Square +20.2.2797.5000, University Doctor 0128.000.1039, Facilities and Operations Service Center +20.2.2615.2222, Environmental Health and Safety +20.2.2615.4170 or +20.2.2615.4180, and IT Help Desk +20.2.2615.1200.\n\nThe AUC campus hotline is 19282, also written as 19AUC. Public emergency numbers in Egypt include ambulance 123, civil defense 125, police 122, road emergencies 012.2111.0000, and tourism police 126.\n\nIn a life-threatening situation, contact the relevant emergency service first, then inform AUC or IPSO once you are safe."
+  },
+  {
+    id: "contact",
+    title: "Contact IPSO",
+    keywords: [
+      "contact", "ipso", "international programs", "international programs and services",
+      "office", "where is ipso", "email ipso", "call ipso", "phone",
+      "office hours", "location", "room p126", "p126", "help", "appointment",
+      "who do i contact", "international student office"
+    ],
+    answer:
+      "The International Programs and Services Office, known as IPSO, is the main office supporting international education activities at AUC. IPSO supports visiting international students who want to study abroad in Cairo and serves as the primary point of contact for international students on campus.\n\nIPSO contact details:\nEmail: ipso@aucegypt.edu\nPhone: +20.2.2615.3612\nLocation: Prince Alwaleed Bin Talal Bin Abdulaziz Alsaud building, Room P126\nAddress: AUC Avenue, P.O. Box 74, New Cairo 11835, Egypt\nWorking hours: 9 am to 3 pm\n\nFor visa and residency matters, contact students.residency@aucegypt.edu. For airport pickup, contact carpool@aucegypt.edu. For housing move-in issues, especially after-hours international flight arrivals, contact reslife@aucegypt.edu with your estimated arrival time at least 48 hours before arrival."
+  }
+];
