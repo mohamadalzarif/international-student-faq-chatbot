@@ -33,8 +33,16 @@ body {
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   padding: 20px;
+  /*
+   * Allow the chat container to stretch a bit wider on larger screens while
+   * still centering it on the page. On small screens it will use 100% of
+   * the available width. Increasing the max-width helps the layout feel less
+   * cramped on desktop displays. The auto margins horizontally center the
+   * container in its parent.
+   */
   width: 100%;
-  max-width: 540px;
+  max-width: 720px;
+  margin: 0 auto;
 }
 
 .chat-container h1 {
