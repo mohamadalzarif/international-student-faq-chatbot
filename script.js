@@ -2,7 +2,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const chatbox = document.getElementById("chatbox");
   const userInput = document.getElementById("userInput");
   const chatForm = document.getElementById("chatForm");
+  const sendBtn = document.getElementById("sendBtn");
   const quickButtons = document.querySelectorAll("[data-topic]");
+
+  if (!chatbox || !userInput) {
+    console.error("Chatbot setup error: missing chatbox or userInput element.");
+    return;
+  }
 
   const STOP_WORDS = new Set([
     "a", "an", "the", "is", "are", "am", "i", "me", "my", "we", "our", "you",
@@ -55,18 +61,22 @@ document.addEventListener("DOMContentLoaded", () => {
     ipso: ["contact", "office", "international"]
   };
 
-  const DIRECT_TOPIC_MAP = {
-    "arrival": "arrival",
-    "visa": "visa",
-    "airport": "airport",
-    "housing": "housing",
-    "registration": "registration",
-    "insurance": "insurance",
-    "student-id": "student-id",
-    "email": "email",
-    "emergency": "emergency",
-    "contact": "contact"
-  };
+  function getData() {
+    if (Array.isArray(window.FAQ_DATA)) return window.FAQ_DATA;
+
+    if (window.faqData && typeof window.faqData === "object") {
+      return Object.entries(window.faqData).map(([id, answer]) => ({
+        id,
+        title: id.replace(/-/g, " "),
+        keywords: [id.replace(/-/g, " ")],
+        answer
+      }));
+    }
+
+    return [];
+  }
+
+  const FAQ_DATA_SAFE = getData();
 
   function escapeHtml(text) {
     return String(text)
@@ -136,7 +146,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function getFaqById(id) {
-    return FAQ_DATA.find(item => item.id === id);
+    return FAQ_DATA_SAFE.find(item => item.id === id);
   }
 
   function scoreFaq(message, faq) {
@@ -160,7 +170,7 @@ document.addEventListener("DOMContentLoaded", () => {
       score += 100;
     }
 
-    if (normalizedMessage.includes(normalize(faq.title))) {
+    if (faq.title && normalizedMessage.includes(normalize(faq.title))) {
       score += 35;
     }
 
@@ -194,7 +204,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function rankFaqs(message) {
-    return FAQ_DATA
+    return FAQ_DATA_SAFE
       .map(faq => ({
         faq,
         score: scoreFaq(message, faq)
@@ -210,9 +220,7 @@ document.addEventListener("DOMContentLoaded", () => {
       .join("\n");
 
     if (!suggestions) {
-      return (
-        "I am not sure I understood the question yet. Try asking about arrival, airport pickup, visa, housing, registration, insurance, student ID, email access, emergencies, or contacting IPSO."
-      );
+      return "I am not sure I understood the question yet. Try asking about arrival, airport pickup, visa, housing, registration, insurance, student ID, email access, emergencies, or contacting IPSO.";
     }
 
     return (
@@ -223,11 +231,15 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function getReply(message) {
-    const normalizedMessage = normalize(message);
+    if (!FAQ_DATA_SAFE.length) {
+      return "The FAQ content could not be loaded. Please check that content.js is connected correctly.";
+    }
 
-    if (DIRECT_TOPIC_MAP[normalizedMessage]) {
-      const faq = getFaqById(DIRECT_TOPIC_MAP[normalizedMessage]);
-      return faq ? faq.answer : buildSuggestionMessage([]);
+    const normalizedMessage = normalize(message);
+    const directFaq = getFaqById(normalizedMessage);
+
+    if (directFaq) {
+      return directFaq.answer;
     }
 
     const ranked = rankFaqs(message);
@@ -259,15 +271,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
     setTimeout(() => {
       addMessage("bot", getReply(cleanMessage));
-    }, 150);
+    }, 120);
 
     userInput.value = "";
     userInput.focus();
   }
 
-  chatForm.addEventListener("submit", event => {
-    event.preventDefault();
-    sendMessage(userInput.value);
+  if (chatForm) {
+    chatForm.addEventListener("submit", event => {
+      event.preventDefault();
+      sendMessage(userInput.value);
+    });
+  }
+
+  if (sendBtn && !chatForm) {
+    sendBtn.addEventListener("click", () => {
+      sendMessage(userInput.value);
+    });
+  }
+
+  userInput.addEventListener("keydown", event => {
+    if (event.key === "Enter" && !chatForm) {
+      event.preventDefault();
+      sendMessage(userInput.value);
+    }
   });
 
   quickButtons.forEach(button => {
@@ -279,7 +306,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       setTimeout(() => {
         addMessage("bot", faq ? faq.answer : getReply(topic));
-      }, 150);
+      }, 120);
     });
   });
 
